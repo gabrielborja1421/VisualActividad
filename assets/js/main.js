@@ -85,8 +85,8 @@ function selectData() {
 
         rows.forEach(row => {
             rHtml += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.nombre +"' style='top: " + conta + "px'>";
-            rHtml2 += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.ap_paterno +"' style='top: " + conta + "px'> ";
-            rHtml3 += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.ap_materno +"' style='top: " + conta + "px'> ";
+            rHtml2 += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.ap_pat +"' style='top: " + conta + "px'> ";
+            rHtml3 += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.ap_mat +"' style='top: " + conta + "px'> ";
             rHtml4 += "<input class='input-custom input is-primary' disabled type='text' placeholder='"+ row.edad +"' style='top: " + conta + "px'> ";
             
             conta = conta + 15;
