@@ -1,0 +1,35 @@
+.contenedorcustom{
+    width: 30%;
+    height: 60%;
+    background-color: rgba(64, 65, 63, 0.918);
+    border-radius: 100px;
+    text-align: center;
+    position: relative;
+    transform: translateX(-50%);
+    /* transform: translateY(-50%); */
+    top: 17%;
+    left: 50%;
+}
+.boton{
+    margin-top: 15px;
+    position: relative;
+    bottom: 10px;
+    width: 100%;
+}
+.contenedorcustom img {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+body{
+    height: 1000PX;
+    background-image: url(./../images/fondo-mosaico-formas-geometricas-coloridas_52683-17204.jpg);
+}
+.login{
+    position: relative;
+    top: 10%;
+    width: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    left: 50%;
+
+}
