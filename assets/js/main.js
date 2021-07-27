@@ -23,14 +23,19 @@ function login() {
 
     }else{
 
-       console.log('contrseña incorrecta');
+       console.log('contraseña incorrecta');
     }
     
 }
 
 function conectar() {
-    con = require('./js/connect');
-    location.href = './datos.html';
+    con = require('./js/connect.js');
+        
+    setTimeout(function(){
+        if (localStorage.getItem('host') != null) {
+            location.href = './datos.html';
+        }
+    }, 5000);
 }
 
 
@@ -40,7 +45,7 @@ function crearPersona() {
     const apPaterno = document.getElementById('apPaterno').value;
     const apMaterno = document.getElementById('apMaterno').value;
     const edad = document.getElementById('edad').value;
-    $queryInsert = `INSERT INTO persona(nombre, ap_paterno, ap_materno, edad) VALUES ("${nombre}","${apPaterno}","${apMaterno}","${edad}")`;
+    $queryInsert = `INSERT INTO persona(nombre, ap_pat, ap_mat, edad) VALUES ("${nombre}","${apPaterno}","${apMaterno}","${edad}")`;
     con.query($queryInsert, function (err, rows, fields) {
 
         if (err) {
@@ -69,7 +74,7 @@ function selectData() {
     var rHtml4 = "";
 
     var conta = 0;
-    $querySelect = `SELECT * FROM persona`;
+    $querySelect = `SELECT * FROM persona `;
     con.query($querySelect, function (err, rows, fields) {
 
         if (err) {

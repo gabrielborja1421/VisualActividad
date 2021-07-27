@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 require('dotenv').config;
 // Agregamos los parametros de conexión
 
@@ -10,20 +10,25 @@ let connection;
 
 
 if (typeof process.env.host  === "undefined" || process.env.host === '') {
+
     host = document.getElementById('host').value;
     user = document.getElementById('user').value;
     password = document.getElementById('password').value;
     database = document.getElementById('database').value;
     port = document.getElementById('port').value;
-
+    console.log(host);
+    console.log(user);
+    console.log(password);
+    console.log(database);
     connection = mysql.createConnection({
         host: host,
         user: user,
-        password: password,
-        database: database,
-        port: port
+        password:password,
+        database:database,
+        port:port
     });
 }else{
+    console.log('hola ');
     connection = mysql.createConnection({
         host: process.env.host,
         user: process.env.user,
@@ -31,7 +36,7 @@ if (typeof process.env.host  === "undefined" || process.env.host === '') {
         database: process.env.database,
         port: process.env.port
     });
-    console.log('entra por env');
+
 }
 
 
@@ -41,7 +46,9 @@ connection.connect(function (err) {
     if (err) {
         console.log(err.code);
         console.log(err.fatal);
-        setTimeout(function(){location.href = './loginbd.html'}, 3000);
+        location.href = './loginbd.html';
+        alert('todo salio mal')
+       
     } else {
         console.log('Conexión exitosa');
         if (typeof localStorage === "undefined" || localStorage === null) {
@@ -55,7 +62,15 @@ connection.connect(function (err) {
             localStorage.setItem('password', password);
             localStorage.setItem('database', database);
             localStorage.setItem('port', port);
+
+            process.env.host = localStorage.getItem('host');
+            process.env.user = localStorage.getItem('user');
+            process.env.password = localStorage.getItem('password');
+            process.env.database = localStorage.getItem('database');
+            process.env.port = localStorage.getItem('port');
         }
+        
+        
 
         localStorage.setItem('con', connection);
     }
